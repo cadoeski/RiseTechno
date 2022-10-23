@@ -13,21 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactServices", "ContactS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportServices", "ReportServices", "{B988792D-7B80-4492-9D9F-A8688A1DE77F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Api", "src\Services\ContactServices\Contact.Api\Contact.Api\Contact.Api.csproj", "{42F64256-0A25-464D-BAAD-DACDA58F8D29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Api", "src\Services\ContactServices\Contact.Api\Contact.Api\Contact.Api.csproj", "{42F64256-0A25-464D-BAAD-DACDA58F8D29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Application", "src\Services\ContactServices\Contact.Application\Contact.Application\Contact.Application.csproj", "{ED1F3A32-1C55-4401-B3FA-6FBDD0462F58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Application", "src\Services\ContactServices\Contact.Application\Contact.Application\Contact.Application.csproj", "{ED1F3A32-1C55-4401-B3FA-6FBDD0462F58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Domain", "src\Services\ContactServices\Contact.Domain\Contact.Domain\Contact.Domain.csproj", "{1551AF06-7140-416F-AE94-13C9883BCD3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Domain", "src\Services\ContactServices\Contact.Domain\Contact.Domain\Contact.Domain.csproj", "{1551AF06-7140-416F-AE94-13C9883BCD3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Infrastructure", "src\Services\ContactServices\Contact.Infrastructure\Contact.Infrastructure\Contact.Infrastructure.csproj", "{50BDD69E-5DBB-444B-8514-5B91FEA07398}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Infrastructure", "src\Services\ContactServices\Contact.Infrastructure\Contact.Infrastructure\Contact.Infrastructure.csproj", "{50BDD69E-5DBB-444B-8514-5B91FEA07398}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Api", "src\Services\ReportServices\Report.Api\Report.Api\Report.Api.csproj", "{33656591-BE20-4E0C-A17D-2F74D72FA4FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Api", "src\Services\ReportServices\Report.Api\Report.Api\Report.Api.csproj", "{33656591-BE20-4E0C-A17D-2F74D72FA4FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Application", "src\Services\ReportServices\Report.Application\Report.Application\Report.Application.csproj", "{A8F8081D-F0DD-4816-B627-54F77A3599CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Application", "src\Services\ReportServices\Report.Application\Report.Application\Report.Application.csproj", "{A8F8081D-F0DD-4816-B627-54F77A3599CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Domain", "src\Services\ReportServices\Report.Domain\Report.Domain\Report.Domain.csproj", "{CD31FE26-2535-43C2-AE17-5E58CF221810}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Domain", "src\Services\ReportServices\Report.Domain\Report.Domain\Report.Domain.csproj", "{CD31FE26-2535-43C2-AE17-5E58CF221810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Infrastructure", "src\Services\ReportServices\Report.Infrastructure\Report.Infrastructure\Report.Infrastructure.csproj", "{0D810468-16AC-4407-9BDC-5654E8D18A12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Infrastructure", "src\Services\ReportServices\Report.Infrastructure\Report.Infrastructure\Report.Infrastructure.csproj", "{0D810468-16AC-4407-9BDC-5654E8D18A12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\BuildingBlocks\Contracts\Contracts.csproj", "{B6954196-3CC7-43A0-83F8-885937FC0665}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{0D810468-16AC-4407-9BDC-5654E8D18A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D810468-16AC-4407-9BDC-5654E8D18A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D810468-16AC-4407-9BDC-5654E8D18A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6954196-3CC7-43A0-83F8-885937FC0665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6954196-3CC7-43A0-83F8-885937FC0665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6954196-3CC7-43A0-83F8-885937FC0665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6954196-3CC7-43A0-83F8-885937FC0665}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{A8F8081D-F0DD-4816-B627-54F77A3599CD} = {B988792D-7B80-4492-9D9F-A8688A1DE77F}
 		{CD31FE26-2535-43C2-AE17-5E58CF221810} = {B988792D-7B80-4492-9D9F-A8688A1DE77F}
 		{0D810468-16AC-4407-9BDC-5654E8D18A12} = {B988792D-7B80-4492-9D9F-A8688A1DE77F}
+		{B6954196-3CC7-43A0-83F8-885937FC0665} = {6BBAC01B-4FD7-40C2-83F5-3574DDA9FA8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E8383BB-7C77-4901-B7D8-DB04CF89BEC2}
