@@ -1,4 +1,5 @@
-﻿using Contact.Application.Features.Users.Response;
+﻿using Contact.Application.Features.Users.ContactCreate;
+using Contact.Application.Features.Users.Response;
 using Contact.Application.Features.Users.UserCreate;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,14 @@ namespace Contact.Api.Controllers
         public async Task<ActionResult> UserDelete(UserDeleteCommand user)
         {
             var result = await mediator.Send(user);
+
+            return Ok(result);
+        }
+
+        [HttpPost("[action]")] 
+        public async Task<ActionResult> ContactCreate(ContactCreateCommand contact)
+        {
+            var result = await mediator.Send(contact);
 
             return Ok(result);
         }

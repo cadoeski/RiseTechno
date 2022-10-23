@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace Contact.Infrastructure.Persistence
 {
-    public class UsersDbContext : DbContext
+    public class ContactDbContext : DbContext
     {
         private IConfiguration configuration;
 
-        public UsersDbContext(IConfiguration configuration)
+        public ContactDbContext(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
 
-        public DbSet<User> user { get; set; }
+        public DbSet<Contacts> contact { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,7 +36,7 @@ namespace Contact.Infrastructure.Persistence
 
 
 
-            modelBuilder.Entity<User>().Property("id")
+            modelBuilder.Entity<Contacts>().Property("id")
        .HasColumnType("uuid")
        .HasDefaultValueSql("uuid_generate_v4()")
        .IsRequired();
@@ -48,6 +48,5 @@ namespace Contact.Infrastructure.Persistence
             #endregion
 
         }
-
     }
 }

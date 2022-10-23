@@ -1,6 +1,7 @@
 ﻿using Contact.Domain.Entities;
 using AutoMapper;
 using Contact.Application.Features.Users.UserCreate;
+using Contact.Application.Features.Users.ContactCreate;
 
 namespace Contact.Application.Mappings
 {
@@ -12,6 +13,8 @@ namespace Contact.Application.Mappings
             CreateMap<UserUpdateCommand, User>().ForMember(p => p.company, o => o.MapFrom(src => src.company));
             CreateMap<UserUpdateCommand, User>().ForMember(p => p.id, o => o.MapFrom(src => src.uid));
             CreateMap<UserDeleteCommand, User>().ForMember(p => p.id, o => o.MapFrom(src => src.uid));
+
+            CreateMap<ContactCreateCommand, Contacts>().ForMember(p => p.email, o => o.MapFrom(src => src.email));
         }
 
     }

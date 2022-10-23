@@ -7,4 +7,6 @@ using System.Threading.Tasks;
 namespace Contracts.Contact
 {
       public record UserCreated(string id,string userName,DateTime createdDate);
+
+    public record ContactCreated(string id, string userName, DateTime createdDate);
 }

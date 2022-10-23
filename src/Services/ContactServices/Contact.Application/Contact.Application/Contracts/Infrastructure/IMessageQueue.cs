@@ -10,5 +10,7 @@ namespace Contact.Application.Contracts.Infrastructure
     public interface IMessageQueue
     {
         Task Publish(UserCreated userCreated);
+
+        Task Publish(ContactCreated userCreated);
     }
 }
