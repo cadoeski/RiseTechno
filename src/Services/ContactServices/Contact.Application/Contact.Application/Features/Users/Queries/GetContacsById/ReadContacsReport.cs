@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Features.Users.Queries.GetContacsById
 {
-    public class ReadContacsReport : IRequest<ContactReport>
+    public class ReadContacsReport : IRequest<User>
     {
         public Guid Id { get; set; }
         public ReadContacsReport(Guid id)

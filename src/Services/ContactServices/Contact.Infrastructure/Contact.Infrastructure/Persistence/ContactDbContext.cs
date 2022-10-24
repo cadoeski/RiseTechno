@@ -19,7 +19,7 @@ namespace Contact.Infrastructure.Persistence
         }
 
 
-        public DbSet<contact> contact { get; set; } 
+        public DbSet<Domain.Entities.Contact> contact { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,18 +36,23 @@ namespace Contact.Infrastructure.Persistence
 
 
 
-            modelBuilder.Entity<contact>().Property("id")
+            modelBuilder.Entity<Contact.Domain.Entities.Contact>().Property("id")
        .HasColumnType("uuid")
-       .HasDefaultValueSql("uuid_generate_v4()")
+       .HasDefaultValueSql("gen_random_uuid()")
        .IsRequired();
 
-            modelBuilder.Entity<contact>()
+            modelBuilder.Entity<Contact.Domain.Entities.Contact>()
              .HasIndex(u => u.id)
              .IsUnique();
 
+
+            modelBuilder.Entity<Contact.Domain.Entities.Contact>()
+.HasOne<User>()
+.WithMany()
+.HasForeignKey(p => p.userid);
             #endregion
 
-        
+
 
 
         }

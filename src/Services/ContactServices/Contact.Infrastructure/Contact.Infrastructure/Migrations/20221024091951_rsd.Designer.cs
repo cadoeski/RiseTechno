@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Contact.Infrastructure.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20221024003400_db")]
-    partial class db
+    [Migration("20221024091951_rsd")]
+    partial class rsd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,12 +25,13 @@ namespace Contact.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Contact.Domain.Entities.contact", b =>
+            modelBuilder.Entity("Contact.Domain.Entities.Contact", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<string>("email")
                         .IsRequired()
@@ -54,6 +55,13 @@ namespace Contact.Infrastructure.Migrations
                     b.HasKey("id")
                         .HasName("pk_contact");
 
+                    b.HasIndex("id")
+                        .IsUnique()
+                        .HasDatabaseName("ix_contact_id");
+
+                    b.HasIndex("userid")
+                        .HasDatabaseName("ix_contact_userid");
+
                     b.ToTable("contact", "public");
                 });
 
@@ -63,7 +71,7 @@ namespace Contact.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<string>("company")
                         .IsRequired()
@@ -88,6 +96,23 @@ namespace Contact.Infrastructure.Migrations
                         .HasDatabaseName("ix_user_id");
 
                     b.ToTable("user", "public");
+                });
+
+            modelBuilder.Entity("Contact.Domain.Entities.Contact", b =>
+                {
+                    b.HasOne("Contact.Domain.Entities.User", "user")
+                        .WithMany("contacts")
+                        .HasForeignKey("userid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_contact_user_userid");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Contact.Domain.Entities.User", b =>
+                {
+                    b.Navigation("contacts");
                 });
 #pragma warning restore 612, 618
         }

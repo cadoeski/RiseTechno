@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Domain.Entities
 {
-    public  class contact : EntityBase
+    public  class Contact : EntityBase
     {
       
 
@@ -19,6 +19,6 @@ namespace Contact.Domain.Entities
 
         public Guid userid { get; set; }
 
-
+        public User user { get; set; }
     }
 }

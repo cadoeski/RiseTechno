@@ -20,10 +20,8 @@ namespace Contact.Infrastructure.Persistence
 
 
         public DbSet<User> user { get; set; }
-
-        //public DbSet<ContactReport> report { get; set; }
-
-        public DbSet<contact> contact { get; set; }
+         
+        public DbSet<Domain.Entities.Contact> contact { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -42,24 +40,42 @@ namespace Contact.Infrastructure.Persistence
 
             modelBuilder.Entity<User>().Property("id")
        .HasColumnType("uuid")
-       .HasDefaultValueSql("uuid_generate_v4()")
+       .HasDefaultValueSql("gen_random_uuid()")
        .IsRequired();
+
+
 
             modelBuilder.Entity<User>()
              .HasIndex(u => u.id)
              .IsUnique();
 
+
+            modelBuilder.Entity<User>()
+             .HasMany(b => b.contacts)
+             .WithOne();
+
+
             #endregion
 
-            #region Report
+            #region Contact
+
+            modelBuilder.Entity<Contact.Domain.Entities.Contact>()
+        .HasIndex(u => u.id)
+        .IsUnique();
+
+            modelBuilder.Entity<Contact.Domain.Entities.Contact>().Property("id")
+       .HasColumnType("uuid")
+       .HasDefaultValueSql("gen_random_uuid()")
+       .IsRequired();
 
 
-           // modelBuilder.Entity<contact>().HasOne<ContactReport>().WithMany(p => p.contactList).HasForeignKey(p => p.userid);
 
-            //modelBuilder.Entity<ContactReport>()
-            //.HasMany(b => b.contactList)
-            //.WithOne().HasForeignKey(p => p.userid);
+            modelBuilder.Entity<Contact.Domain.Entities.Contact>()
+       .HasOne(p => p.user)
+       .WithMany(b => b.contacts)
+       .HasForeignKey(p => p.userid);
 
+            
             #endregion
 
 
