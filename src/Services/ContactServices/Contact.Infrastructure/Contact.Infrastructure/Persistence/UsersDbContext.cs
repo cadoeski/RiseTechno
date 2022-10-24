@@ -21,7 +21,7 @@ namespace Contact.Infrastructure.Persistence
 
         public DbSet<User> user { get; set; }
 
-        public DbSet<ContactReport> report { get; set; }
+        //public DbSet<ContactReport> report { get; set; }
 
         public DbSet<contact> contact { get; set; }
 
@@ -54,7 +54,7 @@ namespace Contact.Infrastructure.Persistence
             #region Report
 
 
-            modelBuilder.Entity<contact>().HasOne<ContactReport>().WithMany(p => p.contactList).HasForeignKey(p => p.userid);
+           // modelBuilder.Entity<contact>().HasOne<ContactReport>().WithMany(p => p.contactList).HasForeignKey(p => p.userid);
 
             //modelBuilder.Entity<ContactReport>()
             //.HasMany(b => b.contactList)
