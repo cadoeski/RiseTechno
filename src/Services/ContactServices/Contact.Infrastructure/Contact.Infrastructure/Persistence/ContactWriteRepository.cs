@@ -22,27 +22,27 @@ namespace Contact.Infrastructure.Persistence
             this.context = context;
         }
 
-        public DbSet<Contacts> Table => context.Set<Contacts>();
-        public async Task<bool> AddAsync(Contacts entity)
+        public DbSet<contact> Table => context.Set<contact>();
+        public async Task<bool> AddAsync(contact entity)
         {
-            EntityEntry<Contacts> entityEntry = await Table.AddAsync(entity);
+            EntityEntry<contact> entityEntry = await Table.AddAsync(entity);
             return entityEntry.State == EntityState.Added;
         }
 
-        public async Task AddRangeAsync(List<Contacts> entities)
+        public async Task AddRangeAsync(List<contact> entities)
         {
             await Table.AddRangeAsync(entities);
         }
 
-        public bool Remove(Contacts entity)
+        public bool Remove(contact entity)
         {
-            EntityEntry<Contacts> entityEntry = Table.Remove(entity);
+            EntityEntry<contact> entityEntry = Table.Remove(entity);
             return entityEntry.State == EntityState.Deleted;
         }
 
         public async Task<bool> RemoveAsync(Guid id)
         {
-            Contacts entity = await Table.FirstOrDefaultAsync(x => x.id == id);
+            contact entity = await Table.FirstOrDefaultAsync(x => x.id == id);
             return Remove(entity);
         }
 
@@ -52,15 +52,15 @@ namespace Contact.Infrastructure.Persistence
             await context.SaveChangesAsync();
         }
 
-        public bool Update(Contacts entity)
+        public bool Update(contact entity)
         {
-            EntityEntry<Contacts> entityEntry = Table.Update(entity);
+            EntityEntry<contact> entityEntry = Table.Update(entity);
             return entityEntry.State == EntityState.Modified;
         }
 
-        public async Task<bool> UpdateAsync(Contacts entity)
+        public async Task<bool> UpdateAsync(contact entity)
         {
-            EntityEntry<Contacts> entityEntry = Table.Update(entity);
+            EntityEntry<contact> entityEntry = Table.Update(entity);
             return entityEntry.State == EntityState.Modified;
         }
     }

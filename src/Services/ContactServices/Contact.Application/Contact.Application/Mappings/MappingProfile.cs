@@ -14,7 +14,7 @@ namespace Contact.Application.Mappings
             CreateMap<UserUpdateCommand, User>().ForMember(p => p.id, o => o.MapFrom(src => src.uid));
             CreateMap<UserDeleteCommand, User>().ForMember(p => p.id, o => o.MapFrom(src => src.uid));
 
-            CreateMap<ContactCreateCommand, Contacts>().ForMember(p => p.email, o => o.MapFrom(src => src.email));
+            CreateMap<ContactCreateCommand, contact>().ForMember(p => p.email, o => o.MapFrom(src => src.email));
         }
 
     }

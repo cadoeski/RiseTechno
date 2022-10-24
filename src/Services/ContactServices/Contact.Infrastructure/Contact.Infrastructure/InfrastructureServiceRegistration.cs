@@ -59,7 +59,13 @@ namespace Contact.Infrastructure
             services.AddDbContext<UsersDbContext>(options =>
                     options.UseNpgsql(configuration["Database:Writes"]));
 
-            services.AddScoped<IUserWriteRepository, UserWriteRepository>(); 
+            services.AddDbContext<ContactDbContext>(options =>
+               options.UseNpgsql(configuration["Database:Writes"]));
+
+
+            services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+            services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
+            services.AddScoped<IUsersReadRepository, UserReadRepository>();
 
             services.AddScoped<IMessageQueue, MessageQueue>();
 

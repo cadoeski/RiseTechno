@@ -21,5 +21,10 @@ namespace Contact.Infrastructure.Queue
         {
             await publishEndpoint.Publish(userResponse);
         }
+
+        public async Task Publish(ContactCreated contactResponse)
+        {
+            await publishEndpoint.Publish(contactResponse);
+        }
     }
 }

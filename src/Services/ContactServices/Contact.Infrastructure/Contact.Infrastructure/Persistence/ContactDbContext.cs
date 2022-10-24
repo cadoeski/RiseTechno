@@ -19,7 +19,7 @@ namespace Contact.Infrastructure.Persistence
         }
 
 
-        public DbSet<Contacts> contact { get; set; }
+        public DbSet<contact> contact { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,21 +31,24 @@ namespace Contact.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("public");
-            #region User
+            #region Contact
 
 
 
 
-            modelBuilder.Entity<Contacts>().Property("id")
+            modelBuilder.Entity<contact>().Property("id")
        .HasColumnType("uuid")
        .HasDefaultValueSql("uuid_generate_v4()")
        .IsRequired();
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<contact>()
              .HasIndex(u => u.id)
              .IsUnique();
 
             #endregion
+
+        
+
 
         }
     }

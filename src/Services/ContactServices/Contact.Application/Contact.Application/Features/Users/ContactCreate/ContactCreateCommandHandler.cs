@@ -3,6 +3,7 @@ using Contact.Application.Contracts.Infrastructure;
 using Contact.Application.Contracts.Persistence;
 using Contact.Domain.Entities;
 using Contracts.Contact;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Features.Users.ContactCreate
 {
-    public class ContactCreateCommandHandler
+    public class ContactCreateCommandHandler : IRequestHandler<ContactCreateCommand, contact>
     {
         private readonly IContactWriteRepository contactWriteRepository;
         private readonly IMapper mapper;
@@ -26,10 +27,10 @@ namespace Contact.Application.Features.Users.ContactCreate
             this.messageQueue = messageQueue;
         }
 
-        public async Task<Contacts> Handle(ContactCreateCommand request, CancellationToken cancellationToken)
+        public async Task<contact> Handle(ContactCreateCommand request, CancellationToken cancellationToken)
         {
 
-            var contact = mapper.Map<Domain.Entities.Contacts>(request);
+            var contact = mapper.Map<Domain.Entities.contact>(request);
             _ = await contactWriteRepository.AddAsync(contact);
             await contactWriteRepository.SaveChanges();
 

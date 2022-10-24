@@ -1,4 +1,5 @@
 ﻿using Contact.Application.Features.Users.ContactCreate;
+using Contact.Application.Features.Users.Queries.GetContacsById;
 using Contact.Application.Features.Users.Response;
 using Contact.Application.Features.Users.UserCreate;
 using MediatR;
@@ -50,9 +51,17 @@ namespace Contact.Api.Controllers
         }
 
         [HttpPost("[action]")] 
-        public async Task<ActionResult> ContactCreate(ContactCreateCommand contact)
+        public async Task<ActionResult> ContactCreate(ContactCreateCommand contacts)
         {
-            var result = await mediator.Send(contact);
+            var result = await mediator.Send(contacts);
+
+            return Ok(result);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult> GetUser(ReadContacsReport contacts)
+        {
+            var result = await mediator.Send(contacts);
 
             return Ok(result);
         }

@@ -21,6 +21,10 @@ namespace Contact.Infrastructure.Persistence
 
         public DbSet<User> user { get; set; }
 
+        public DbSet<ContactReport> report { get; set; }
+
+        public DbSet<contact> contact { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
@@ -46,6 +50,18 @@ namespace Contact.Infrastructure.Persistence
              .IsUnique();
 
             #endregion
+
+            #region Report
+
+
+            modelBuilder.Entity<contact>().HasOne<ContactReport>().WithMany(p => p.contactList).HasForeignKey(p => p.userid);
+
+            //modelBuilder.Entity<ContactReport>()
+            //.HasMany(b => b.contactList)
+            //.WithOne().HasForeignKey(p => p.userid);
+
+            #endregion
+
 
         }
 
