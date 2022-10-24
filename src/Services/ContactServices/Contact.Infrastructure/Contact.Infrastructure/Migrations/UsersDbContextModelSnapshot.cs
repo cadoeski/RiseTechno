@@ -36,10 +36,10 @@ namespace Contact.Infrastructure.Migrations
                         .HasColumnType("text")
                         .HasColumnName("email");
 
-                    b.Property<string>("konum")
+                    b.Property<string>("location")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("konum");
+                        .HasColumnName("location");
 
                     b.Property<string>("phone_number")
                         .IsRequired()
@@ -61,6 +61,34 @@ namespace Contact.Infrastructure.Migrations
                         .HasDatabaseName("ix_contact_userid");
 
                     b.ToTable("contact", "public");
+                });
+
+            modelBuilder.Entity("Contact.Domain.Entities.LocationStatusReport", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<DateTime>("created_date")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_date");
+
+                    b.Property<string>("report")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("report");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("status");
+
+                    b.HasKey("id")
+                        .HasName("pk_locationreport");
+
+                    b.ToTable("locationreport", "public");
                 });
 
             modelBuilder.Entity("Contact.Domain.Entities.User", b =>

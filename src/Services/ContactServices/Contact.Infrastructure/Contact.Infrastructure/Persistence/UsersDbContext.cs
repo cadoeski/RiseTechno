@@ -23,6 +23,10 @@ namespace Contact.Infrastructure.Persistence
          
         public DbSet<Domain.Entities.Contact> contact { get; set; }
 
+        public DbSet<LocationStatusReport> locationreport { get; set; }
+
+        public DbSet<vw_report> vw_reports { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
@@ -75,7 +79,28 @@ namespace Contact.Infrastructure.Persistence
        .WithMany(b => b.contacts)
        .HasForeignKey(p => p.userid);
 
-            
+
+            #endregion
+
+            #region LocationReport
+
+            modelBuilder.Entity<LocationStatusReport>().Property("id")
+         .HasColumnType("uuid")
+         .HasDefaultValueSql("gen_random_uuid()")
+         .IsRequired();
+
+            #endregion
+
+
+            #region vw_report
+
+            modelBuilder
+          .Entity<vw_report>(eb =>
+          {
+              eb.HasNoKey();
+              eb.ToView("vw_report");
+          });
+
             #endregion
 
 

@@ -1,5 +1,6 @@
 ﻿using Contact.Application.Features.Users.ContactCreate;
 using Contact.Application.Features.Users.Queries.GetContacsById;
+using Contact.Application.Features.Users.Queries.reports;
 using Contact.Application.Features.Users.Response;
 using Contact.Application.Features.Users.UserCreate;
 using MediatR;
@@ -65,5 +66,15 @@ namespace Contact.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult> GetLocationReport(ReadReportView contacts)
+        {
+            var result = await mediator.Send(contacts);
+
+            return Ok(result);
+        }
+
+
     }
 }

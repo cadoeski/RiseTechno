@@ -65,6 +65,7 @@ namespace Contact.Infrastructure
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
             services.AddScoped<IUsersReadRepository, UserReadRepository>();
+            services.AddScoped<IReportReadRepository, ReportReadRepository>();
 
             services.AddScoped<IMessageQueue, MessageQueue>();
 
