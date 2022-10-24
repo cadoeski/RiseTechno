@@ -59,5 +59,24 @@ namespace Contact.Infrastructure.Persistence
             return user;
 
         }
+
+
+        public async Task<User> GetContactLocationReport(Guid id)
+        {
+            using var connection = new NpgsqlConnection(configuration.GetValue<string>("Database:Reads"));
+
+            var userDictinory = new Dictionary<Guid, User>();
+            string sql = @"select *  FROM public.vw_report";
+            var contact = await connection.QueryAsync<vw_report>(sql);
+
+          
+
+
+            return null;
+
+        }
+
+
+        
     }
 }

@@ -14,7 +14,7 @@ namespace Contact.Application.Features.Users.ContactCreate
 
         public string email { get; set; }
 
-        public string konum { get; set; }
+        public string location { get; set; }
 
         public string userid { get; set; }
     }

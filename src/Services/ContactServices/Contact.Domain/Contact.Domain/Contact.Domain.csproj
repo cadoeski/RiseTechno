@@ -10,4 +10,8 @@
     <Compile Remove="Entities\ContactReport.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.10" />
+  </ItemGroup>
+
 </Project>

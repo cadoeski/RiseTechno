@@ -15,7 +15,7 @@ namespace Contact.Domain.Entities
 
         public string email { get; set; }
 
-        public string konum { get; set; }
+        public string location { get; set; }
 
         public Guid userid { get; set; }
 
