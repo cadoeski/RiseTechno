@@ -14,35 +14,35 @@ namespace Contact.Infrastructure.Persistence
     public class ContactWriteRepository : IContactWriteRepository
     {
         private readonly IConfiguration configuration;
-        private readonly ContactDbContext context;
+        private readonly UsersDbContext context;
 
-        public ContactWriteRepository(IConfiguration configuration, ContactDbContext context)
+        public ContactWriteRepository(IConfiguration configuration, UsersDbContext context)
         {
             this.configuration = configuration;
             this.context = context;
         }
 
-        public DbSet<contact> Table => context.Set<contact>();
-        public async Task<bool> AddAsync(contact entity)
+        public DbSet<Domain.Entities.Contact> Table => context.Set<Contact.Domain.Entities.Contact>();
+        public async Task<bool> AddAsync(Domain.Entities.Contact entity)
         {
-            EntityEntry<contact> entityEntry = await Table.AddAsync(entity);
+            EntityEntry<Domain.Entities.Contact> entityEntry = await Table.AddAsync(entity);
             return entityEntry.State == EntityState.Added;
         }
 
-        public async Task AddRangeAsync(List<contact> entities)
+        public async Task AddRangeAsync(List<Domain.Entities.Contact> entities)
         {
             await Table.AddRangeAsync(entities);
         }
 
-        public bool Remove(contact entity)
+        public bool Remove(Domain.Entities.Contact entity)
         {
-            EntityEntry<contact> entityEntry = Table.Remove(entity);
+            EntityEntry<Domain.Entities.Contact> entityEntry = Table.Remove(entity);
             return entityEntry.State == EntityState.Deleted;
         }
 
         public async Task<bool> RemoveAsync(Guid id)
         {
-            contact entity = await Table.FirstOrDefaultAsync(x => x.id == id);
+            Domain.Entities.Contact entity = await Table.FirstOrDefaultAsync(x => x.id == id);
             return Remove(entity);
         }
 
@@ -52,15 +52,15 @@ namespace Contact.Infrastructure.Persistence
             await context.SaveChangesAsync();
         }
 
-        public bool Update(contact entity)
+        public bool Update(Domain.Entities.Contact entity)
         {
-            EntityEntry<contact> entityEntry = Table.Update(entity);
+            EntityEntry<Domain.Entities.Contact> entityEntry = Table.Update(entity);
             return entityEntry.State == EntityState.Modified;
         }
 
-        public async Task<bool> UpdateAsync(contact entity)
+        public async Task<bool> UpdateAsync(Domain.Entities.Contact entity)
         {
-            EntityEntry<contact> entityEntry = Table.Update(entity);
+            EntityEntry<Domain.Entities.Contact> entityEntry = Table.Update(entity);
             return entityEntry.State == EntityState.Modified;
         }
     }

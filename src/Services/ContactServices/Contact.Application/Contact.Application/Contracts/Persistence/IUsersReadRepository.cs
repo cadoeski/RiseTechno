@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Contracts.Persistence
 {
-    public interface IUsersReadRepository : IReadRepository<ContactReport>
+    public interface IUsersReadRepository : IReadRepository<User>
     {
 
     }

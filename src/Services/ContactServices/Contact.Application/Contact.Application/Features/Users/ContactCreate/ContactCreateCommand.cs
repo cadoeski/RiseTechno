@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Features.Users.ContactCreate
 {
-    public class ContactCreateCommand : IRequest<contact>
+    public class ContactCreateCommand : IRequest<Domain.Entities.Contact>
     {
         public string phone_number { get; set; }
 

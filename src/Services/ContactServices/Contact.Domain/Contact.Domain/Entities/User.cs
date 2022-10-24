@@ -14,6 +14,9 @@ namespace Contact.Domain.Entities
 
         public string surname { get; set; }
 
-        public string company { get; set; } 
+        public string company { get; set; }
+
+        public List<Contact> contacts { get; set; } = new List<Contact>();
+
     }
 }

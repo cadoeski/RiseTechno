@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Features.Users.ContactCreate
 {
-    public class ContactCreateCommandHandler : IRequestHandler<ContactCreateCommand, contact>
+    public class ContactCreateCommandHandler : IRequestHandler<ContactCreateCommand, Domain.Entities.Contact>
     {
         private readonly IContactWriteRepository contactWriteRepository;
         private readonly IMapper mapper;
@@ -27,10 +27,10 @@ namespace Contact.Application.Features.Users.ContactCreate
             this.messageQueue = messageQueue;
         }
 
-        public async Task<contact> Handle(ContactCreateCommand request, CancellationToken cancellationToken)
+        public async Task<Domain.Entities.Contact> Handle(ContactCreateCommand request, CancellationToken cancellationToken)
         {
 
-            var contact = mapper.Map<Domain.Entities.contact>(request);
+            var contact = mapper.Map<Domain.Entities.Contact>(request);
             _ = await contactWriteRepository.AddAsync(contact);
             await contactWriteRepository.SaveChanges();
 

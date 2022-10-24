@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Persistence\ContactDbContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
     <PackageReference Include="MassTransit" Version="8.0.7" />
@@ -36,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migration\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Notification\" />
   </ItemGroup>
 

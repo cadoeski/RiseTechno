@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Features.Users.Queries.GetContacsById
 {
-    public class ReadContacsReportHandler : IRequestHandler<ReadContacsReport, ContactReport>
+    public class ReadContacsReportHandler : IRequestHandler<ReadContacsReport, User>
     {
         private readonly IUsersReadRepository userReadRepository;
         private readonly IMapper mapper;
@@ -21,12 +21,12 @@ namespace Contact.Application.Features.Users.Queries.GetContacsById
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<ContactReport> Handle(ReadContacsReport request, CancellationToken cancellationToken)
+        public async Task<User> Handle(ReadContacsReport request, CancellationToken cancellationToken)
         {
             var musteri = await userReadRepository.GetByIdAsync(request.Id);
            
 
-            var musteriVm = mapper.Map<ContactReport>(musteri);
+            var musteriVm = mapper.Map<User>(musteri);
 
             return musteriVm;
         }

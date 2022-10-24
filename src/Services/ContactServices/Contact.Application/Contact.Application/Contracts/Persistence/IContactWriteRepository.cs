@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Contracts.Persistence
 {
-    public interface IContactWriteRepository : IWriteRepository<contact>
+    public interface IContactWriteRepository : IWriteRepository<Domain.Entities.Contact>
     {
 
     }

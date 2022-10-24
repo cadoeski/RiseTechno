@@ -17,7 +17,7 @@ namespace Contact.Domain.Entities
 
         public string company { get; set; }
 
-        public List<contact> contactList { get; set; }
+        public List<Contact> contactList { get; set; }
 
     }
 }
