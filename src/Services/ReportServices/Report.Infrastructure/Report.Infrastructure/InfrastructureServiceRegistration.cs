@@ -4,20 +4,20 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Contact.Infrastructure.Settings;
+using Report.Infrastructure.Settings;
 using MassTransit; 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using Npgsql;
-using Contact.Infrastructure.Persistence;
-using Contact.Application.Contracts.Persistence;
+using Report.Infrastructure.Persistence;
+using Report.Application.Contracts.Persistence;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
-using Contact.Application.Contracts.Infrastructure;
-using Contact.Infrastructure.Queue;
+using Report.Application.Contracts.Infrastructure;
+using Report.Infrastructure.Queue;
 using Microsoft.EntityFrameworkCore;
 
-namespace Contact.Infrastructure
+namespace Report.Infrastructure
 {
     public static class InfrastructureServiceRegistration
     {
@@ -49,7 +49,7 @@ namespace Contact.Infrastructure
                         cfg.Username(rabbitMqSettings.UserName);
                         cfg.Password(rabbitMqSettings.Password);
                     });
-                    configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("ContactService", false));
+                    configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("ReportService", false));
 
 
                 });
@@ -62,10 +62,7 @@ namespace Contact.Infrastructure
             
 
 
-            services.AddScoped<IUserWriteRepository, UserWriteRepository>();
-            services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
-            services.AddScoped<IUsersReadRepository, UserReadRepository>();
-            services.AddScoped<IReportReadRepository, ReportReadRepository>();
+            services.AddScoped<ILocationStatusReportWriteRepository, LocationStatusReportWriteRepository>(); 
 
             services.AddScoped<IMessageQueue, MessageQueue>();
 

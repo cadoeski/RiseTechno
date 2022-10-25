@@ -9,4 +9,9 @@ namespace Contracts.Contact
       public record UserCreated(string id,string userName,DateTime createdDate);
 
     public record ContactCreated(string id, string userName, DateTime createdDate);
+
+
+    public record LocationCreated(string id, string userName, DateTime createdDate);
+
+    public record LocationComplated(string id, string url, string data);
 }
