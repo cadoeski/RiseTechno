@@ -77,12 +77,13 @@ Veri yapısı olarak da:
 
 
 ```
-
-gh repo clone cadoeski/RiseTechno
+git
+git clone https://github.com/cadoeski/RiseTechno
 
 ```
  
 ## Kurulum
+
 ```
-Docker compose ( docker-compose -f docker/docker-compose.yml up) 
+docker-compose -f docker/docker-compose.yml up 
 ```
