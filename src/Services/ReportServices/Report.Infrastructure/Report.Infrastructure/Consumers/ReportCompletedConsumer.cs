@@ -16,14 +16,14 @@ namespace Report.Infrastructure.Consumers
 {
     public class ReportCompletedConsumer : IConsumer<LocationComplated>
     {
-        private readonly ILocationStatusReportWriteRepository writeRepository; 
+        private readonly ILocationStatusReportWriteRepository writeRepository;
         private readonly ILogger<ReportCompletedConsumer> logger;
 
         public ReportCompletedConsumer(ILocationStatusReportWriteRepository writeRepository, ILogger<ReportCompletedConsumer> logger)
         {
 
             this.writeRepository = writeRepository;
-            this.logger = logger; 
+            this.logger = logger;
         }
 
         public async Task Consume(ConsumeContext<LocationComplated> context)
@@ -31,12 +31,11 @@ namespace Report.Infrastructure.Consumers
 
 
 
-            LocationStatusReport report = new LocationStatusReport(); 
+            LocationStatusReport report = new LocationStatusReport();
             string dosyaAdi = await CreateExcel(context.Message.id);
             report.report = dosyaAdi;
-            report.id =  new Guid(context.Message.id);
-            report.status = "Tamamlandı";
-             
+            report.id = new Guid(context.Message.id);
+            report.status = "Tamamlandı"; 
             var result = await writeRepository.UpdateAsync(report);
             await writeRepository.SaveChanges();
 
@@ -65,7 +64,7 @@ namespace Report.Infrastructure.Consumers
 
 
                 var contents = response.Content.ReadAsStringAsync().Result;
-                report = JsonConvert.DeserializeObject<List<vw_report>>(contents); 
+                report = JsonConvert.DeserializeObject<List<vw_report>>(contents);
 
             }
 
@@ -87,7 +86,7 @@ namespace Report.Infrastructure.Consumers
                     count++;
                 }
                 string dosyaAdi = "reports/" + Guid.NewGuid().ToString() + ".xlsx";
-                workbook.SaveAs(dosyaAdi); 
+                workbook.SaveAs(dosyaAdi);
 
                 return dosyaAdi;
             }

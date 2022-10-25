@@ -9,7 +9,7 @@ namespace Report.Domain.Entities
 {
     public class LocationStatusReport : EntityBase
     {
-        public DateTime created_date { get; set; } = DateTime.Now;
+        public DateTime created_date { get; set; } = DateTime.Now.ToUniversalTime();
 
         public string status { get; set; }
 

@@ -33,10 +33,7 @@ namespace Report.Application.Features.LocationReport
 
         public async Task<Domain.Entities.LocationStatusReport> Handle(LocationStatusReportCreateCommand request, CancellationToken cancellationToken)
         {
-            //location tablosuna kayıt at
-            //Servis sorgula 
-            //dönen veriyi excel yap
-            //location tablosunu güncelle
+            
             await messageQueue.Publish(new LocationCreated("start", "rt-user", DateTime.Now));
 
             Domain.Entities.LocationStatusReport locationStatus = new Domain.Entities.LocationStatusReport();

@@ -1,4 +1,4 @@
-﻿ 
+﻿
 using Report.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
