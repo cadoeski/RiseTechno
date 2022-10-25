@@ -75,9 +75,14 @@ Veri yapısı olarak da:
 
 ## Git
 
+
+```
+
 gh repo clone cadoeski/RiseTechno
 
+```
  
 ## Kurulum
-
+```
 Docker compose ( docker-compose -f docker/docker-compose.yml up) 
+```
