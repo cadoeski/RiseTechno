@@ -77,7 +77,7 @@ Veri yapısı olarak da:
 
 
 ```
-git
+
 git clone https://github.com/cadoeski/RiseTechno
 
 ```
