@@ -12,6 +12,6 @@ namespace Report.Application.Contracts.Infrastructure
     {
         Task Publish(LocationCreated  Created);
 
-     
+        Task Publish(LocationComplated Created);
     }
 }

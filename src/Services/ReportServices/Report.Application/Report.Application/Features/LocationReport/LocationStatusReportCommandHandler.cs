@@ -29,15 +29,15 @@ namespace Report.Application.Features.LocationReport
             this.logger = logger;
             this.messageQueue = messageQueue;
         }
-         
-     
+
+
         public async Task<Domain.Entities.LocationStatusReport> Handle(LocationStatusReportCreateCommand request, CancellationToken cancellationToken)
         {
             //location tablosuna kayıt at
             //Servis sorgula 
             //dönen veriyi excel yap
             //location tablosunu güncelle
-
+            await messageQueue.Publish(new LocationCreated("start", "rt-user", DateTime.Now));
 
             Domain.Entities.LocationStatusReport locationStatus = new Domain.Entities.LocationStatusReport();
             locationStatus.report = "";
@@ -48,67 +48,18 @@ namespace Report.Application.Features.LocationReport
             var location = await writeRepository.AddAsync(locationStatus);
             await writeRepository.SaveChanges();
 
+            await messageQueue.Publish(new LocationComplated(locationStatus.id.ToString()));
 
-            await messageQueue.Publish(new LocationCreated(locationStatus.id.ToString(), "rt-user", DateTime.Now));
-            _ = await CreateExcel(locationStatus);
 
-            
+
+
 
             return locationStatus;
 
         }
 
 
-        public async Task<bool> CreateExcel(LocationStatusReport location)
-        {
-            var report = new List<vw_report>();
-            using (var httpClient = new HttpClient())
-            {
 
-
-                ReadReportView view = new ReadReportView();
-                view.username = "test";
-
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                string json = JsonConvert.SerializeObject(view);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                httpClient.BaseAddress = new Uri("https://localhost:7095");
-                var response = httpClient.PostAsync("api/v1/Contact/GetLocationReport", content).Result;
-
-
-                var contents = response.Content.ReadAsStringAsync().Result;
-                report = JsonConvert.DeserializeObject<List<vw_report>>(contents);
-
-
-
-            }
-
-
-            using (var workbook = new XLWorkbook())
-            {
-                var worksheet = workbook.Worksheets.Add("Report");
-                worksheet.Cell(1, 1).Value = "konum";
-                worksheet.Cell(1, 2).Value = "kayitli_kisi";
-                worksheet.Cell(1, 3).Value = "tel_sayisi";
-
-
-                int count = 2;
-                foreach (var item in report)
-                {
-                    worksheet.Cell(2, 1).Value = item.konum;
-                    worksheet.Cell(2, 2).Value = item.kayitli_kisi;
-                    worksheet.Cell(2, 3).Value = item.tel_sayisi;
-                    count++;
-                }
-                string dosyaAdi = "reports/" + Guid.NewGuid().ToString() + ".xlsx";
-                workbook.SaveAs(dosyaAdi);
-
-               
-
-                return true;
-            }
-        }
 
 
     }

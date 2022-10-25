@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Report.Application.Features.LocationReport;
+using Report.Application.Features.Queries;
 
 namespace Report.Api.Controllers
 {

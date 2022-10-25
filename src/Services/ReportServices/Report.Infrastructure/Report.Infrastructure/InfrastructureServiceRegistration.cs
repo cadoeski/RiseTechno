@@ -59,8 +59,8 @@ namespace Report.Infrastructure
             services.AddDbContext<UsersDbContext>(options =>
                     options.UseNpgsql(configuration["Database:Writes"]));
 
-            
 
+            services.AddScoped<IReportReadRepository, ReportReadRepository>();
 
             services.AddScoped<ILocationStatusReportWriteRepository, LocationStatusReportWriteRepository>(); 
 

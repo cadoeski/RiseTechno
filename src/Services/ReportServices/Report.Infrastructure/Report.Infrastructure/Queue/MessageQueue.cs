@@ -14,13 +14,18 @@ namespace Report.Infrastructure.Queue
         private readonly IPublishEndpoint publishEndpoint; 
         public MessageQueue(IPublishEndpoint publishEndpoint)
         {
-            this.publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+            this.publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint)); 
         }
 
         public async Task Publish(LocationCreated userResponse)
         {
             await publishEndpoint.Publish(userResponse); 
         }
- 
+
+        public async Task Publish(LocationComplated userResponse)
+        {
+            await publishEndpoint.Publish(userResponse);
+        }
+
     }
 }
