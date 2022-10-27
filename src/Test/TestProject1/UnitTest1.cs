@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Http;
 using Contact.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Report.Application.Features.LocationReport;
+using Report.Api.Controllers;
 
 namespace TestProject1
 {
@@ -55,7 +57,7 @@ namespace TestProject1
             UserCreateCommand user = new UserCreateCommand();
             user.company = c;
             user.name = n;
-            user.surname =s;
+            user.surname = s;
 
             var sut = new ContactController(servie.Object, contextAc.Object);
 
@@ -64,12 +66,39 @@ namespace TestProject1
 
 
             // /// Assert 
-            result.StatusCode.Should().Be(200);
+
+            Assert.True(result.StatusCode.Value == 200);
             result.Should().NotBeNull();
-            
+
         }
 
 
+        [Fact]
+
+        public async Task GetLocationReport_Count()
+        {
+            /// Arrange
+            var servie = new Mock<MediatR.IMediator>();
+            var contextAc = new Mock<IHttpContextAccessor>();
+
+
+            LocationStatusReportCreateCommand user = new LocationStatusReportCreateCommand();
+            user.username = "TEST";
+
+            var sut = new ReportController(servie.Object, contextAc.Object);
+
+            /// Act
+            var result = await sut.CreateReport(user) as OkObjectResult; 
+            Assert.NotNull(result);
+
+            var model = result.Value as LocationStatusReport;
+            Assert.NotNull(model);
+
+            var actual = model.status;
+            Assert.Equal("Hazýrlanýyor", actual);
+             
+
+        }
 
 
     }

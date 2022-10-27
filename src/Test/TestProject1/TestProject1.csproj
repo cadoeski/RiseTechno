@@ -29,6 +29,9 @@
     <ProjectReference Include="..\..\Services\ContactServices\Contact.Api\Contact.Api\Contact.Api.csproj" />
     <ProjectReference Include="..\..\Services\ContactServices\Contact.Application\Contact.Application\Contact.Application.csproj" />
     <ProjectReference Include="..\..\Services\ContactServices\Contact.Infrastructure\Contact.Infrastructure\Contact.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Services\ReportServices\Report.Api\Report.Api\Report.Api.csproj" />
+    <ProjectReference Include="..\..\Services\ReportServices\Report.Application\Report.Application\Report.Application.csproj" />
+    <ProjectReference Include="..\..\Services\ReportServices\Report.Infrastructure\Report.Infrastructure\Report.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
