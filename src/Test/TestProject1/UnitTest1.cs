@@ -53,9 +53,9 @@ namespace TestProject1
 
 
             UserCreateCommand user = new UserCreateCommand();
-            user.company = "h";
-            user.name = "hata";
-            user.surname = "surname";
+            user.company = c;
+            user.name = n;
+            user.surname =s;
 
             var sut = new ContactController(servie.Object, contextAc.Object);
 
