@@ -27,31 +27,21 @@ namespace Report.Infrastructure.Consumers
         }
 
         public async Task Consume(ConsumeContext<LocationComplated> context)
-        {
-
-
-
+        { 
             LocationStatusReport report = new LocationStatusReport();
             string dosyaAdi = await CreateExcel(context.Message.id);
             report.report = dosyaAdi;
             report.id = new Guid(context.Message.id);
             report.status = "Tamamlandı"; 
             var result = await writeRepository.UpdateAsync(report);
-            await writeRepository.SaveChanges();
-
-            //await  musteriRepository.AddAsync(musteri);
-
-
-        }
-
+            await writeRepository.SaveChanges();  
+        } 
 
         public async Task<string> CreateExcel(string id)
         {
             var report = new List<vw_report>();
             using (var httpClient = new HttpClient())
-            {
-
-
+            { 
                 ReadReportView view = new ReadReportView();
                 view.username = "test";
 
@@ -64,8 +54,7 @@ namespace Report.Infrastructure.Consumers
 
 
                 var contents = response.Content.ReadAsStringAsync().Result;
-                report = JsonConvert.DeserializeObject<List<vw_report>>(contents);
-
+                report = JsonConvert.DeserializeObject<List<vw_report>>(contents); 
             }
 
 
