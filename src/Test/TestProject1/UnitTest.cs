@@ -21,7 +21,7 @@ using System;
 using Contact.Application.Features.Users.Queries.GetContacsById;
 using Report.Application.Features.Queries;
 
-namespace TestProject1
+namespace RiseTechnologyTestProject
 {
     public class ContactApiTest
     {

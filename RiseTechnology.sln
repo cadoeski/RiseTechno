@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "src\BuildingBl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EBFB4ECB-4D6B-4752-85C2-A11CF1577003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "src\Test\TestProject1\TestProject1.csproj", "{F08E9B04-5CA8-432A-99B1-4F265BB6BF4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiseTechnologyTestProject", "src\Test\TestProject1\RiseTechnologyTestProject.csproj", "{F08E9B04-5CA8-432A-99B1-4F265BB6BF4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
